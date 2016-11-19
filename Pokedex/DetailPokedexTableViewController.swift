@@ -32,11 +32,28 @@ class DetailPokedexTableViewController: UITableViewController {
             return
         }
         
+        self.title = validPokemon.name
+        
         self.characterImageView.image = UIImage(named: "\(validPokemon.name)")
         self.nameLabel.text = validPokemon.name
         self.typeLabel.text = validPokemon.type
         self.summaryLabel.text = validPokemon.summary
         self.evolutionsLabel.text = validPokemon.evolutions.count > 1 ? "\(validPokemon.name) > " + validPokemon.evolutions.joined(separator: " > ") : "\(validPokemon.name)"
+    }
+    
+    // MARK: - UITableViewDelegate Methods
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 3 {
+            return UITableViewAutomaticDimension
+        }
+        else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
+        }
     }
 
 }

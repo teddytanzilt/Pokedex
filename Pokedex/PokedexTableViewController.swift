@@ -19,6 +19,8 @@ class PokedexTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         self.title = "Pokedex"
         
         self.pokedex.append(Pokemon(name: "Pidgey",
