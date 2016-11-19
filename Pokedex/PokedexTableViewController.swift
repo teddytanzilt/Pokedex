@@ -49,4 +49,15 @@ class PokedexTableViewController: UITableViewController {
         cell.detailTextLabel?.text = pokemon.type
         return cell
     }
+    
+    // MARK: - UITableViewDelegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let validDetailPokedexTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailPokedexStoryboard") as? DetailPokedexTableViewController else {
+            assertionFailure("DetailPokedexStoryboard cannot be located!")
+            return
+        }
+        validDetailPokedexTableViewController.pokemon = self.pokedex[indexPath.row]
+        self.navigationController?.pushViewController(validDetailPokedexTableViewController, animated: true)
+    }
 }
