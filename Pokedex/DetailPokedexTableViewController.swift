@@ -34,6 +34,8 @@ class DetailPokedexTableViewController: UITableViewController {
         
         self.title = validPokemon.name
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareActionButtonTapped))
+        
         self.characterImageView.image = UIImage(named: "\(validPokemon.name)")
         self.nameLabel.text = validPokemon.name
         self.typeLabel.text = validPokemon.type
@@ -55,5 +57,11 @@ class DetailPokedexTableViewController: UITableViewController {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
-
+    
+    // MARK: - Local Methods
+    
+    func shareActionButtonTapped() {
+        let activityViewController = UIActivityViewController(activityItems: [self.summaryLabel, self.characterImageView.image!], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
