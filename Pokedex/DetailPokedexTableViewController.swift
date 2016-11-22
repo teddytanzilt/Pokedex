@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailPokedexTableViewController: UITableViewController {
     
@@ -34,7 +35,9 @@ class DetailPokedexTableViewController: UITableViewController {
         
         self.title = validPokemon.name
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareActionButtonTapped))
+        let shareActionBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(DetailPokedexTableViewController.shareActionButtonTapped))
+        let characterReferenceBookmarkBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(self.characterReferenceBookmarkButtonTapped))
+        self.navigationItem.rightBarButtonItems = [shareActionBarButtonItem, characterReferenceBookmarkBarButtonItem]
         
         self.characterImageView.image = UIImage(named: "\(validPokemon.name)")
         self.nameLabel.text = validPokemon.name
@@ -59,6 +62,15 @@ class DetailPokedexTableViewController: UITableViewController {
     }
     
     // MARK: - Local Methods
+    
+    func characterReferenceBookmarkButtonTapped() {
+        guard let validPokemonName = self.pokemon?.name, let validURL = URL(string: "http://pokemondb.net/pokedex/\(validPokemonName)") else {
+            assertionFailure("Invalid URL detected.")
+            return
+        }
+        let safariViewController = SFSafariViewController(url: validURL)
+        self.present(safariViewController, animated: true, completion: nil)
+    }
     
     func shareActionButtonTapped() {
         let activityViewController = UIActivityViewController(activityItems: [self.summaryLabel, self.characterImageView.image!], applicationActivities: nil)
