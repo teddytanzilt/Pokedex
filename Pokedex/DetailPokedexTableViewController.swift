@@ -18,10 +18,19 @@ class DetailPokedexTableViewController: UITableViewController {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var evolutionsLabel: UILabel!
+    @IBOutlet weak var toggleFavoriteLabel: UILabel!
+
     
     // MARK: - Stored Properties
     
     var pokemon: Pokemon?
+    
+    let favorites = "Favorites"
+    
+    enum Favorite: String {
+        case Added = "Add to Favorite"
+        case Removed = "Remove from Favorite"
+    }
 
     // MARK: - UIViewController Methods
     
@@ -35,6 +44,8 @@ class DetailPokedexTableViewController: UITableViewController {
         
         self.title = validPokemon.name
         
+        self.setToggleFavoriteLabel()
+        
         let shareActionBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(DetailPokedexTableViewController.shareActionButtonTapped))
         let characterReferenceBookmarkBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(self.characterReferenceBookmarkButtonTapped))
         self.navigationItem.rightBarButtonItems = [shareActionBarButtonItem, characterReferenceBookmarkBarButtonItem]
@@ -47,6 +58,25 @@ class DetailPokedexTableViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDelegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row == 5, let validPokemonName = self.pokemon?.name else { return }
+        
+        self.tableView.deselectRow(at: indexPath, animated: false)
+            
+        let standardUserDefaults = UserDefaults.standard
+        var pulledFavorites = standardUserDefaults.object(forKey: self.favorites) as? [String] ?? [String]()
+        
+        if let validIndex = pulledFavorites.index(of: validPokemonName) {
+            pulledFavorites.remove(at: validIndex)
+        }
+        else {
+            pulledFavorites.append(validPokemonName)
+        }
+        
+        standardUserDefaults.set(pulledFavorites, forKey: self.favorites)
+        self.setToggleFavoriteLabel()
+    }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
@@ -75,5 +105,12 @@ class DetailPokedexTableViewController: UITableViewController {
     func shareActionButtonTapped() {
         let activityViewController = UIActivityViewController(activityItems: [self.summaryLabel, self.characterImageView.image!], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    fileprivate func setToggleFavoriteLabel() {
+        let standardUserDefaults = UserDefaults.standard
+        let pulledFavorites = standardUserDefaults.object(forKey: self.favorites) as? [String] ?? [String]()
+        guard let validPokemonName = self.pokemon?.name else { return }
+        self.toggleFavoriteLabel.text = pulledFavorites.contains(validPokemonName) ? Favorite.Removed.rawValue : Favorite.Added.rawValue
     }
 }

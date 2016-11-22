@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650D9C9B1DE42DCA00864358 /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D9C9A1DE42DCA00864358 /* FavoritesCollectionViewController.swift */; };
 		655BA8DB1DDF636900747416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BA8DA1DDF636900747416 /* AppDelegate.swift */; };
 		655BA8E01DDF636900747416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 655BA8DE1DDF636900747416 /* Main.storyboard */; };
 		655BA8E21DDF636900747416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655BA8E11DDF636900747416 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		650D9C9A1DE42DCA00864358 /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
 		655BA8D71DDF636900747416 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		655BA8DA1DDF636900747416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		655BA8DF1DDF636900747416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		655BA8D91DDF636900747416 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				650D9C9A1DE42DCA00864358 /* FavoritesCollectionViewController.swift */,
 				655BA8F21DE028BA00747416 /* DetailPokedexTableViewController.swift */,
 				655BA8EE1DE0197100747416 /* Pokemon.swift */,
 				655BA8EC1DE00EBE00747416 /* PokedexTableViewController.swift */,
@@ -147,6 +150,7 @@
 				655BA8DB1DDF636900747416 /* AppDelegate.swift in Sources */,
 				655BA8EF1DE0197100747416 /* Pokemon.swift in Sources */,
 				655BA8F31DE028BA00747416 /* DetailPokedexTableViewController.swift in Sources */,
+				650D9C9B1DE42DCA00864358 /* FavoritesCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +312,7 @@
 				655BA8EB1DDF636900747416 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
