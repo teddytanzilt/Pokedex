@@ -214,23 +214,29 @@
         <scene sceneID="4Tn-PS-JmH">
             <objects>
                 <collectionViewController id="RZC-Tv-dLY" customClass="FavoritesCollectionViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="hyd-LI-bla">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hyd-LI-bla">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z12-G4-YZC">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="96" height="96"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XBa-72-k67">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReusableCell" id="XBa-72-k67">
+                                <rect key="frame" x="10" y="10" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="123" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id4-2O-ab2">
+                                            <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
                             </collectionViewCell>
                         </cells>
@@ -239,11 +245,11 @@
                             <outlet property="delegate" destination="RZC-Tv-dLY" id="uNr-SO-8Ud"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="a2S-pJ-zeU"/>
+                    <navigationItem key="navigationItem" id="DGJ-Y6-5Nl"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5eb-Tu-ipe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="906"/>
+            <point key="canvasLocation" x="2063.1999999999998" y="905.3973013493254"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xke-0s-DlV">
@@ -256,12 +262,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="Evl-1f-rE1" kind="relationship" relationship="viewControllers" id="aN1-9u-wmX"/>
-                        <segue destination="RZC-Tv-dLY" kind="relationship" relationship="viewControllers" id="P5F-bQ-azr"/>
+                        <segue destination="WN5-q9-97s" kind="relationship" relationship="viewControllers" id="P5F-bQ-azr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGb-Io-Jfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="144.3778110944528"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lxR-lZ-6FV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WN5-q9-97s" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="a2S-pJ-zeU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="69S-nF-GkS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RZC-Tv-dLY" kind="relationship" relationship="rootViewController" id="WHK-aJ-qaN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3c-VP-uvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1124" y="905.3973013493254"/>
         </scene>
     </scenes>
 </document>
