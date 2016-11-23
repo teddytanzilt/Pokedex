@@ -26,9 +26,11 @@ class FavoritesCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         let userdefaults = UserDefaults.standard
-        self.favorites = userdefaults.object(forKey: "Favorites") as? [String] ?? [String]()
-        
-        self.collectionView?.reloadData()
+        let savedFavorites = userdefaults.object(forKey: "Favorites") as? [String] ?? [String]()
+        if savedFavorites != self.favorites {
+            self.favorites = savedFavorites
+            self.collectionView?.reloadData()
+        }
     }
     
     // MARK: - UICollectionViewDataSource Methods

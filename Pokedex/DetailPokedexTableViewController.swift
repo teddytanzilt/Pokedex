@@ -31,7 +31,15 @@ class DetailPokedexTableViewController: UITableViewController {
         case Added = "Add to Favorite"
         case Removed = "Remove from Favorite"
     }
+    
+    // MARK: - NSCoding Methods
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.hidesBottomBarWhenPushed = true
+    }
+    
     // MARK: - UIViewController Methods
     
     override func viewDidLoad() {
